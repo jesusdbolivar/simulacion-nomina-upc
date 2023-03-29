@@ -1,0 +1,181 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Nomina mensual UPC</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="#">Simulación</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Docentes catedraticos</h2>
+            <div class="card" style="width: 18rem;">
+                <div class="form-group text-center">
+                    <label>Valor de Hora catedra</label>
+                    <input [(ngModel)]="inputValorHoraCatedra" type="number" class="form-control">
+                    <label>Cantidad de horas Totales</label>
+                    <input [(ngModel)]="inputCantidadHorasTotales" type="number" class="form-control">
+                    <small>Cantidad horas de todos los docentes</small>
+                    <label><b>Hora catedra x horas Totales:
+                            {{(inputValorHoraCatedra*inputCantidadHorasTotales)|currency}}</b></label><br>
+                    <hr>
+                    <label>Salud: {{salud()|currency}}</label><br>
+                    <label>Pension: {{pension()|currency}}</label><br>
+                    <label>Cesantias: {{cesantias()|currency}}</label><br>
+                    <hr>
+                    <label><b>Parafiscales</b></label><br>
+                    <label>SENA: {{sena()|currency}}</label><br>
+                    <label>ICBF: {{icbf()|currency}}</label><br>
+                    <label>Cajas de compensación familiar:
+                        {{cajaCompensacion()|currency}}</label><br>
+                    <label></label>
+                    <hr>
+                    <label>ARL: {{arl()|currency}}</label><br>
+                    <label>Primas legales: {{inputCantidadHorasTotales == 0
+                        ?0:primasLegales()|currency}}</label><br>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h2>Docentes ocacionales</h2>
+            <div class="card" style="width: 18rem;">
+                <div class="form-group text-center">
+                    <label>Total auxiliares tiempo completo</label>
+                    <input [(ngModel)]="inputAuxiliarTiempoCompleto" type="number" class="form-control">
+                    <label>Total auxiliares medio tiempo</label>
+                    <input [(ngModel)]="inputAuxiliarMedioTiempo" type="number" class="form-control">
+                    <label>Total asistentes tiempo completo</label>
+                    <input [(ngModel)]="inputAsistenteTiempoCompleto" type="number" class="form-control">
+                    <label>Total asistentes medio tiempo</label>
+                    <input [(ngModel)]="inputAsistenteMedioTiempo" type="number" class="form-control">
+                    <label>Total asociados tiempo completo</label>
+                    <input [(ngModel)]="inputAsociadoTiempoCompleto" type="number" class="form-control">
+                    <label>Total asociados medio tiempo</label>
+                    <input [(ngModel)]="inputAsociadoMedioTiempo" type="number" class="form-control">
+                    <label>Total titulares tiempo completo</label>
+                    <input [(ngModel)]="inputTitularTiempoCompleto" type="number" class="form-control">
+                    <label>Total titulares medio tiempo</label>
+                    <input [(ngModel)]="inputTitularMedioTiempo" type="number" class="form-control">
+                    <hr>
+                    <label>Salud: {{saludOcacional()|currency}}</label><br>
+                    <label>Pension: {{pensionOcacional()|currency}}</label><br>
+                    <label>Cesantias: {{cesantiasOcacional()|currency}}</label><br>
+                    <hr>
+                    <label><b>Parafiscales</b></label><br>
+                    <label>SENA: {{senaOcacional()|currency}}</label><br>
+                    <label>ICBF: {{icbfOcacional()|currency}}</label><br>
+                    <label>Cajas de compensación familiar:
+                        Ocacional {{cajaCompensacion()|currency}}</label><br>
+                    <label></label>
+                    <hr>
+                    <label>ARL: {{arlOcacional()|currency}}</label><br>
+                    <label>Primas legales:Ocacional {{primasLegalesOcacional()|currency}}</label><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Bonificacion mensual Factor de un S.M.M.L.V (Postgrado)</h2>
+            <div class="card" style="width: 18rem;">
+                <div class="form-group text-center">
+                    <label>Total docentes con especializacion</label>
+                    <input [(ngModel)]="inputEspecializacion" type="number" class="form-control">
+                    <label>Total docentes con maestria</label>
+                    <input [(ngModel)]="inputMaestria" type="number" class="form-control">
+                    <label>Total docentes con doctorado</label>
+                    <input [(ngModel)]="inputDoctorado" type="number" class="form-control">
+                    <label>Total docentes con postdoctorado</label>
+                    <input [(ngModel)]="inputPostDoctorado" type="number" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>Bonificacion mensual Factor de un S.M.M.L.V (Postgrado)</h2>
+            <div class="card" style="width: 18rem;">
+                <div class="form-group text-center">
+                    <label>Total docentes con especializacion</label>
+                    <input [(ngModel)]="inputEspecializacionOcacional" type="number" class="form-control">
+                    <label>Total docentes con maestria</label>
+                    <input [(ngModel)]="inputMaestriaOcacional" type="number" class="form-control">
+                    <label>Total docentes con doctorado</label>
+                    <input [(ngModel)]="inputDoctoradoOcacional" type="number" class="form-control">
+                    <label>Total docentes con postdoctorado</label>
+                    <input [(ngModel)]="inputPostDoctoradoOcacional" type="number" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Bonificacion mensual Factor de un S.M.M.L.V (Grupo y/o semillero)</h2>
+            <div class="card" style="width: 18rem;">
+                <div class="form-group text-center">
+                    <label>Total docentes A1</label>
+                    <input [(ngModel)]="inputA1" type="number" class="form-control">
+                    <label>Total docentes A</label>
+                    <input [(ngModel)]="inputA" type="number" class="form-control">
+                    <label>Total docentes B</label>
+                    <input [(ngModel)]="inputB" type="number" class="form-control">
+                    <label>Total docentes C</label>
+                    <input [(ngModel)]="inputC" type="number" class="form-control">
+                    <label>Total docentes reconocidos por colciencias</label>
+                    <input [(ngModel)]="inputColciencia" type="number" class="form-control">
+                    <label>Total docentes semillero</label>
+                    <input [(ngModel)]="inputSemillero" type="number" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>Bonificacion mensual Factor de un S.M.M.L.V (Grupo y/o semillero)</h2>
+            <div class="card" style="width: 18rem;">
+                <div class="form-group text-center">
+                    <label>Total docentes A1</label>
+                    <input [(ngModel)]="inputA1Ocacional" type="number" class="form-control">
+                    <label>Total docentes A</label>
+                    <input [(ngModel)]="inputAOcacional" type="number" class="form-control">
+                    <label>Total docentes B</label>
+                    <input [(ngModel)]="inputBOcacional" type="number" class="form-control">
+                    <label>Total docentes C</label>
+                    <input [(ngModel)]="inputCOcacional" type="number" class="form-control">
+                    <label>Total docentes reconocidos por colciencias</label>
+                    <input [(ngModel)]="inputColcienciaOcacional" type="number" class="form-control">
+                    <label>Total docentes semillero</label>
+                    <input [(ngModel)]="inputSemilleroOcacional" type="number" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <h1 *ngIf="inputCantidadHorasTotales>0 && inputValorHoraCatedra>0 ;else errorHoras">total Catedratico:
+                {{totalNetoCatedratico()|currency}}</h1>
+            <ng-template #errorHoras>
+                <div class=" col-md-3 alert alert-danger">Porfavor ingrese el valor y la cantidad de las horas para ver
+                    el total</div>
+            </ng-template>
+        </div>
+        <div class="col-md-6">
+            <h1>total Ocacional:
+                {{totalNetoOcacional()|currency}}</h1>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1 *ngIf="inputCantidadHorasTotales>0 && inputValorHoraCatedra>0 ;else totalCompleto">Total nomina:
+                {{(totalNetoCatedratico()+totalNetoOcacional())|currency}}</h1>
+            <ng-template #totalCompleto>
+                <h1 class=" col-md-6 alert-danger">Total nomina: {{totalNetoOcacional()|currency}}</h1>
+            </ng-template>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
